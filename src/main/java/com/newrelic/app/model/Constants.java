@@ -10,4 +10,5 @@ public class Constants {
     public static String TERMINATE_COMMAND = "terminate";
     public static int MAX_INPUT_LENGTH = 9;
     public static String LOG_FILE = "number.log";
+    public static int READ_TIMEOUT = 5000;
 }

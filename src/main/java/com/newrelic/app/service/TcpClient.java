@@ -3,7 +3,9 @@ package com.newrelic.app.service;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 
 /**
  * This is the tcp client class that connects to the server, write a command and closes the connection
@@ -18,7 +20,9 @@ public class TcpClient {
      */
     public TcpClient(String hostName, int port) {
         try {
-            socket = new Socket(hostName, port);
+            socket = new Socket();
+            SocketAddress socketAddress = new InetSocketAddress(hostName, port);
+            socket.connect(socketAddress, 10000);
             OutputStream out = socket.getOutputStream();
             writer = new DataOutputStream(out);
         } catch (IOException e) {

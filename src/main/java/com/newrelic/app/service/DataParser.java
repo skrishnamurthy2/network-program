@@ -37,8 +37,8 @@ public class DataParser implements Runnable {
      */
     @Override
     public void run() {
-
         try {
+            clientSocket.setSoTimeout(Constants.READ_TIMEOUT);
             DataInputStream in = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
 
             StringBuilder number = new StringBuilder();
